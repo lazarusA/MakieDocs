@@ -54,7 +54,7 @@ jobs:
       - name: Install documentation dependencies
         run: sudo apt-get update && sudo apt-get install -y xorg-dev mesa-utils xvfb libgl1 freeglut3-dev libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev libxext-dev libcairo2-dev libfreetype6-dev libffi-dev libjpeg-dev libpng-dev libz-dev
       - name: Install documentation dependencies
-        run: DISPLAY=:0 xvfb-run -s '-screen 0 1024x768x24' julia --project=docs -e 'using Pkg; pkg"add https://github.com/LuxDL/DocumenterVitepress.jl.git"; pkg"dev --local Makie"; pkg"dev dev/Makie/MakieCore dev/Makie/GLMakie dev/Makie/CairoMakie dev/Makie/WGLMakie"; Pkg.instantiate(); Pkg.precompile()'
+        run: DISPLAY=:0 xvfb-run -s '-screen 0 1024x768x24' julia --project=docs -e 'using Pkg; pkg"add https://github.com/LuxDL/DocumenterVitepress.jl.git"; pkg"dev Makie"; pkg"dev dev/Makie/MakieCore dev/Makie/GLMakie dev/Makie/CairoMakie dev/Makie/WGLMakie"; Pkg.instantiate(); Pkg.precompile()'
       - name: generating examples md files
         env:
           JULIA_DEBUG: "Documenter"
